@@ -69,6 +69,7 @@ msg = EmailMessage()
 msg['Subject'] = f'Technology Support Staff Week in Review {today}'
 msg['From'] = 'David Pflug <dpflug@circuit5.org>'
 msg['To'] = 'Court Tech Dept <court_technology_department@circuit5.org>'
+#msg['To'] = 'David Pflug <dpflug@circuit5.org>'
 msg.preamble = "This is a multi-part message in MIME format. Please enable html email in your client to view it."
 msg.set_content("This is a multi-part message in MIME format. Please enable html email in your client to view it.")
 
@@ -115,10 +116,10 @@ with tempfile.TemporaryDirectory() as tempdir:
                 tkey = 'None'
             totals[tkey] += 1
 
+        sorted_totals = sorted(totals.items(), key=lambda x: x[1], reverse=("tickets by owner" in sec.lower()))
+        
         #DEBUG
-        print(totals, file=sys.stderr)
-
-        sorted_totals = sorted(totals.items(), key=lambda x: str(x[0]).lower())
+        print(sorted_totals, file=sys.stderr)
 
         # Create bar charts
         chart = pygal.Bar(x_label_rotation=30,
