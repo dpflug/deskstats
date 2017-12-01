@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!env python
 import argparse
 import pygal
 import subprocess
@@ -17,7 +17,10 @@ parser.add_argument('--date', '-d',
 
 args = parser.parse_args()
 
-rt = Rt('https://support.circuit5.org/rt/REST/1.0/', 'dpflug', subprocess.check_output(['pass', 'Work'], timeout=30).decode('utf-8').split('\n')[0], skip_login=True)
+# No login credentials needed/given because they're in ~/.netrc.
+# For some reason, I can't get login to work any other way. Look into this later, maybe?
+rt = Rt(url='https://support.circuit5.org/rt/REST/1.0/',
+        skip_login=True)
 
 ticket_open = 'Status != "resolved" AND Status != "rejected"'
 stale = 'LastUpdated < "-30 days"'
