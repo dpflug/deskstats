@@ -6,7 +6,7 @@ import sys
 #import pygal
 import numpy as np
 
-from collections import Counter
+from counter.counter import Counter
 from datetime import date
 from email.utils import make_msgid
 from python_rt.rt import Rt
