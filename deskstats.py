@@ -6,13 +6,13 @@ import sys
 #import pygal
 import numpy as np
 
-from counter.counter import Counter
 from datetime import date
 from email.utils import make_msgid
 from python_rt.rt import Rt
 
 # Python 2/3 compatibility
 if sys.version_info[0] == 3:
+    from collections import Counter
     from email.mime.multipart import MIMEMultipart
     from email.mime.image import MIMEImage
     from email.mime.text import MIMEText
@@ -20,6 +20,7 @@ if sys.version_info[0] == 3:
 else:
     import shutil
 
+    from counter.counter import Counter
     from email.MIMEMultipart import MIMEMultipart
     from email.MIMEImage import MIMEImage
     from email.MIMEText import MIMEText
